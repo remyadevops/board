@@ -35,7 +35,7 @@ pipeline {
         stage('SonarQube Analsyis') {
             steps {
                 withSonarQubeEnv('sonar') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=BoardGame -Dsonar.projectKey=BoardGame \
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=baord -Dsonar.projectKey=baord \
                             -Dsonar.java.binaries=. '''
                 }
             }
