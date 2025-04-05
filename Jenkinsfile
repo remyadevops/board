@@ -72,15 +72,7 @@ pipeline {
             }
         }
         
-        stage('Push Docker Image') {
-            steps {
-               script {
-                   withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                            sh "docker push remya-new-devops-eng/boardshack:latest"
-                    }
-               }
-            }
-        }
+    
         stage('Deploy To Kubernetes') {
             steps {
                withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'http://ec2-54-83-185-75.compute-1.amazonaws.com:6443') {
